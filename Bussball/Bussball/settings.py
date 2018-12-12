@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rbac',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "bussball",
         'USER': "root",
-        'PASSWORD': 123456,
+        'PASSWORD': "123456",
         'HOST': "localhost",
         'PORT': 3306,
     }
@@ -117,6 +118,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+# 自定义auth表
+AUTH_USER_MODEL ="rbac.User"
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
@@ -139,3 +143,7 @@ CACHES = {
 
 # Session 的引擎：redis
 SESSION_ENGINE = "redis_sessions.session"
+
+# media配置，用户上传的文件都默认存放到当前文件夹下
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
